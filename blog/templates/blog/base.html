@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+	  <title>DarkRoamer</title>
+	  <meta name="description" content="website description" /	  <meta name="keywords" content="website keywords, website keywords" />
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+      <link rel="icon" href="{% static "my_images/icon.png" %}">
+	  <!-- modernizr enables HTML5 elements and feature detects -->
+	  <script type="text/javascript" src="{% static "js/modernizr-1.5.min.js" %}"></script>
+	</head>
+	<body>
+		<div id="main">
+			<header>
+				<nav id="header2">
+				<a href="{% url 'blog:blog_homepage' %}"><img src="{% static "my_images/headimg.gif" %}" width="220px" alt="small_head_img" ></img></a>
+				<div id="menu_container">
+				  <ul class="sf-menu" id="nav">
+                    <li><a href="{%url 'blog:blog_homepage'%}">Home  </a></li>
+                    <li><a href="{%url 'note_page'%}">Message Board</a></li>
+                    <li><a href="{%url 'archive_page'%}">Archive</a></li>
+                    <li><a href="{%url 'about_page'%}">About</a></li>
+                    <li><a href="{%url 'feed'%}">Feed</a></li>
+				  </ul>
+				</div>
+				</nav>
+ 			</header>
+
+		<script type="text/javascript">
+          var gifs = ["one", "two"];
+          var numberCount = 0;
+		  var numberCount2 = 0;
+
+          //changeImage();
+		  oneImg();
+		  setTimeout(twoImg, 700);
+		  setTimeout(oneImg, 2000);
+
+		  //mouse hovering function
+		  var mysvg = document.getElementById('mysvg');
+		  mysvg.onmouseover = function (){
+			twoImg();
+			setTimeout(oneImg, 2000);
+		  }
+
+		  function oneImg() {
+			document.querySelector('.inner').setAttribute("class", "inner one");
+		  }
+
+		  function twoImg() {
+			document.querySelector('.inner').setAttribute("class", "inner two");
+		  }
+        </script>
+
+	  <style  type="text/css">
+
+			.one {
+			  fill: url(#one);
+			}
+
+			.two {
+			  fill: url(#two);
+			}
+
+			.three {
+			  fill: url(#three);
+			}
+
+			.four {
+			  fill: url(#four);
+			}
+
+			.five {
+			  fill: url(#five);
+			}
+
+			.six {
+			  fill: url(#six);
+			}
+
+			.seven {
+			  fill: url(#seven);
+			}
+
+			.static {
+			  fill: url(#static);
+			}
+		</style>
+
+			<div id="site_content">
+				<div class="content">
+				{% block content %} content {% endblock %}
+				</div>
+			</div>
+			<!--
+			<div id="hover_box">
+					<p>About me</p>
+			</div>
+			<div id="sidebar_container">
+				<div class="sidebar">
+				  <h3>About me:</h3>
+				  <p>Email:bknieven@gmai.com</p>
+				  <p>profile:a student</p>
+				</div>
+			</div>
+			-->
+			<div id="scroll">
+				<a title="Scroll to the top" class="top" href="#"><img src="{% static "images/top.png" %}" alt="top" /></a>
+			</div>
+			<footer>
+                  <p><a href="{% url 'feed' %}"><img src="{% static "images/rss.png" %}" alt="rss" /></a></p>
+				  <p>Copyright &copy; a.darkroamer@gmail.com | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
+			</footer>
+		</div>
+	</body>
+</html>

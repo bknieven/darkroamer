@@ -1,0 +1,13 @@
+{% extends "./base.html" %}
+{% load markdown_deux_tags %}
+
+{% block content %}     
+            {% if all_articles %}
+				{% for article in all_articles %}
+                        <h3><font size="-0.5">{{article.pub_date.year}}.{{article.pub_date.month}}.{{article.pub_date.day}} :  &nbsp&nbsp</font><a href="{% url 'blog:article_page' article.slug %}">{{ article.title_text }}</a></h3>
+                    
+				{% endfor %}
+			{% else %}
+			    <p>No article are available.</p>
+			{% endif %}
+{% endblock %}

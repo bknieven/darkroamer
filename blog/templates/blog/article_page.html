@@ -1,0 +1,8 @@
+{% extends "./base.html" %}
+{% load markdown_deux_tags %}
+
+{% block content %}     
+			<h1>{{ article.title_text | markdown }}</h1>
+			<p>{{ article.article_text | markdown }}</p>
+{% endblock %}
+

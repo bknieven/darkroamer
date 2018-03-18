@@ -1,0 +1,10 @@
+{% extends "./base.html" %}
+{% load markdown_deux_tags %}
+
+{% block content %}     
+        {% if about %}
+				{{ about.about_text | markdown }}
+		{% else %}
+			<p>No about text are available.</p>
+		{% endif %}
+{% endblock %}

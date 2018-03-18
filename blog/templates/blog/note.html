@@ -1,0 +1,38 @@
+{% extends "./base.html" %}
+{% load markdown_deux_tags %}
+
+{% block content %}
+        <br>
+			{% if latest_note_list %}
+                {% with "null" as year %}
+				    {% for note in latest_note_list %}
+					    <div class="notebar">
+                            
+						    <div class="data-article">
+							    <span class="month">{{note.pub_date.month}}月</span>
+							    <span class="day">{{note.pub_date.day}}</span>
+						    </div>
+						    <p>{{note.note_text | markdown}}</p>
+					    </div>
+				    {% endfor %}
+                {% endwith %}
+			{% else %}
+				<p>No note are available.</p>
+			{% endif %}
+		</br>
+        
+		<form action="{% url 'add_note' %}" method="post">
+		{% csrf_token %}
+          <div class="form_settings">
+			<h4>Message:  </h4><textarea name="note_textarea" rows="6" cols="60"></textarea>
+            <p>( <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown syntax</a> allowed, but no raw HTML. )</p>
+            <h4>Email: </h4><textarea name="note_emailarea" rows="1" cols="60"></textarea>
+            <p>( Your Email address will not be published. )</p>
+			<p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="note_summit" value="Submit" /></p>
+          </div>
+        </form>
+		{% if error_message %}
+			<p><font color="red">{{error_message}}</font></p>
+		{% endif %}
+
+{% endblock %}

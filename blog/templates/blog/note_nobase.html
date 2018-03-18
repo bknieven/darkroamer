@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+	  <title>DarkRoamer</title>
+	  <meta name="description" content="website description" />
+	  <meta name="keywords" content="website keywords, website keywords" />
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+	  <!-- modernizr enables HTML5 elements and feature detects -->
+	  <script type="text/javascript" src="{% static "js/modernizr-1.5.min.js" %}"></script>
+	</head>
+    <body>
+		<div id="main">
+			<div id="site_content">
+				<div class="content">
+					{% if latest_note_list %}
+						{% for note in latest_note_list %}
+							<p>{{note.note_text}}</p>
+							<p>{{note.pub_date}}</p>
+						{% endfor %}
+					{% else %}
+						<p>No note are available.</p>
+					{% endif %}
+				</div>
+			</div>
+        </div>
+
+    </body>
+
